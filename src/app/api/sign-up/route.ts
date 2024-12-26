@@ -80,7 +80,7 @@ export async function POST(request: Request){
         message: "User registered successfully. Please verify your email"
        }, {status:201})
 
-
+       
 
     } catch (error) {
         console.error('Error registering user ',error)
