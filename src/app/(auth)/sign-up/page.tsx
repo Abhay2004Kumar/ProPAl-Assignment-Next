@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast"
 import { useRouter } from 'next/navigation'
 import { signUpSchema } from '@/schemas/signUpSchema'
 import { ApiResponse } from '@/types/ApiResponse'
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Loader2 } from 'lucide-react'
@@ -26,6 +26,7 @@ const Page = () => {
   const { toast } = useToast()
   const router = useRouter()
 
+//zod implementation
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -86,7 +87,7 @@ const Page = () => {
           </h1>
           <p className="mb-4">Sign up to start your anonymous adventure</p>
         </div>
-        <FormProvider {...form}>
+        <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
             <FormField
               control={form.control}
@@ -155,7 +156,7 @@ const Page = () => {
               </p>
             </div>
           </form>
-        </FormProvider>
+        </Form>
       </div>
     </div>
   )
