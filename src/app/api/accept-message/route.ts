@@ -23,12 +23,12 @@ await dbConnect()
     }
 
     const userId = user._id;
-    const {acceptmessages} = await request.json()
+    const {acceptMessages} = await request.json()
 
     try {
        const updatedUser =  await UserModel.findByIdAndUpdate(
             userId,
-            {isAcceptingMessage: acceptmessages},
+            {isAcceptingMessage: acceptMessages},
             {new : true}
         )
         if(!updatedUser){
