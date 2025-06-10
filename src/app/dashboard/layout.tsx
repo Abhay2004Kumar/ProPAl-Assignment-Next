@@ -5,7 +5,7 @@ import {toast} from 'react-hot-toast';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Button } from '@/components/ui/button';
+import { Button } from '../../components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,10 +14,16 @@ import {
 } from '../../components/ui/dropdown-menu';
 import { Sun, Moon } from 'lucide-react';
 
+type User = {
+  username: string;
+  email: string;
+  phone: string;
+};
+
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {

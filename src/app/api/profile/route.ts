@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import jwt from 'jsonwebtoken';
 import User from '@/models/User';
 import connectDB from '@/lib/db';
 import { verifyToken } from '@/lib/auth';

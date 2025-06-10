@@ -1,34 +1,46 @@
 'use client';
 
 import { useState } from 'react';
-import {toast} from "react-hot-toast"
+import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
+type FormField = 'username' | 'email' | 'password' | 'phone';
+
 export default function Signup() {
-  const [form, setForm] = useState({ username: '', email: '', password: '', phone: '' });
+  const [form, setForm] = useState<Record<FormField, string>>({
+    username: '',
+    email: '',
+    password: '',
+    phone: '',
+  });
   const router = useRouter();
 
   const handleSubmit = async () => {
     const res = await fetch('/api/signup', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(form),
     });
 
-    if (res.ok){ 
-      toast.success("You have registered successfully")
-      router.push('/login');}
-    else toast.error("Registration failed!")
+    if (res.ok) {
+      toast.success('You have registered successfully');
+      router.push('/login');
+    } else {
+      toast.error('Registration failed!');
+    }
   };
 
   return (
     <div className="p-4 max-w-md mx-auto min-h-screen flex flex-col justify-center">
       <h1 className="text-3xl font-bold mb-6 text-center">Sign Up</h1>
       <div className="space-y-3">
-        {['username', 'email', 'password', 'phone'].map(key => (
+        {(Object.keys(form) as FormField[]).map((key) => (
           <input
             key={key}
-            value={(form as any)[key]}
-            onChange={e => setForm({ ...form, [key]: e.target.value })}
+            value={form[key]}
+            onChange={(e) => setForm({ ...form, [key]: e.target.value })}
             placeholder={key[0].toUpperCase() + key.slice(1)}
             className="border p-3 w-full rounded-md"
             type={key === 'password' ? 'password' : 'text'}

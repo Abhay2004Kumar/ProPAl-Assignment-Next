@@ -20,10 +20,7 @@ type STTConfig = {
   providers: STTProvider[];
 };
 
-type ToastType = {
-  message: string;
-  type: 'success' | 'error';
-};
+
 
 export default function AgentPage() {
   const [sttConfig, setSttConfig] = useState<STTConfig | null>(null);
