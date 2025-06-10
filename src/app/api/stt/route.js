@@ -4,13 +4,25 @@ import { promises as fs } from 'fs';
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), 'config', 'stt.json');
+    // Use correct path for both development and production
+    const filePath = path.join(process.cwd(), 'public/config', 'stt.json');
     const fileContents = await fs.readFile(filePath, 'utf-8');
-    const data = JSON.parse(fileContents);
+    const { stt } = JSON.parse(fileContents);
 
-    return NextResponse.json(data); // will return { stt: [...] }
+    return NextResponse.json(
+      { stt },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'public, s-maxage=3600'
+        }
+      }
+    );
   } catch (error) {
-
-    return NextResponse.json({ error: 'Failed to load STT config' }, { status: 500 },error);
+    console.error('STT config error:', error);
+    return NextResponse.json(
+      { error: 'Failed to load STT config' },
+      { status: 500 }
+    );
   }
 }

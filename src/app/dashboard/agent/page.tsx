@@ -20,6 +20,13 @@ type STTConfig = {
   providers: STTProvider[];
 };
 
+type AgentConfig = {
+  provider: string;
+  model: string;
+  language: string;
+};
+
+
 
 
 export default function AgentPage() {
@@ -36,26 +43,39 @@ export default function AgentPage() {
   useEffect(() => {
     const savedConfig = localStorage.getItem('agentConfig');
     if (savedConfig) {
-      const { provider, model, language } = JSON.parse(savedConfig);
+      const { provider, model, language } = JSON.parse(savedConfig) as AgentConfig;
       setSelectedProvider(provider);
       setSelectedModel(model);
       setSelectedLanguage(language);
     }
   }, []);
+  
 
   useEffect(() => {
     const fetchSTTConfig = async () => {
       try {
+        setLoading(true);
         const response = await fetch('/api/stt');
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error || 'Failed to load config');
-        setSttConfig({ providers: data.stt });
-        setLoading(false);
-      } catch (err: any) {
-        setError(err.message);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+  
+        const { stt } = await response.json(); // Destructure the stt property
+        
+        if (!stt || !Array.isArray(stt)) {
+          throw new Error('Invalid STT config format');
+        }
+  
+        setSttConfig({ providers: stt });
+      } catch (err) {
+        console.error('Fetch error:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load config');
+      } finally {
         setLoading(false);
       }
     };
+  
     fetchSTTConfig();
   }, []);
 

@@ -11,7 +11,7 @@ export interface IUser extends mongoose.Document {
 }
 
 // Interface for User model (static methods if any)
-interface IUserModel extends mongoose.Model<IUser> {}
+interface IUserModel extends mongoose.Model<IUser> { findByEmail(email: string): Promise<IUser | null>;}
 
 const UserSchema = new mongoose.Schema({
   username: String,
@@ -19,5 +19,9 @@ const UserSchema = new mongoose.Schema({
   password: String,
   phone: String
 });
+
+UserSchema.statics.findByEmail = function (email: string) {
+  return this.findOne({ email });
+};
 
 export default mongoose.models.User || mongoose.model<IUser, IUserModel>('User', UserSchema);
