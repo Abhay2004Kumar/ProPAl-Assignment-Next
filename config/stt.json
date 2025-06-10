@@ -1,0 +1,98 @@
+{
+    "stt": [
+      {
+        "name": "Deepgram",
+        "value": "Deepgram",
+        "models": [
+          {
+            "name": "Nova-2-General",
+            "value": "nova-2-general",
+            "languages": [
+              { "name": "Multilingual (Spanish + English)", "value": "multi" },
+              { "name": "Bulgarian", "value": "bg" },
+              { "name": "Chinese (Mandarin, Simplified)", "value": "zh-CN" },
+              { "name": "Chinese (Cantonese, Traditional)", "value": "zh-HK" },
+              { "name": "English-US", "value": "en-US" },
+              { "name": "English-AUS", "value": "en-AU" },
+              { "name": "English-UK", "value": "en-GB" },
+              { "name": "English-IN", "value": "en-IN" },
+              { "name": "English-NZ", "value": "en-NZ" },
+              { "name": "French", "value": "fr" },
+              { "name": "German", "value": "de" },
+              { "name": "German (Switzerland)", "value": "de-CH" },
+              { "name": "Greek", "value": "el" },
+              { "name": "Hindi", "value": "hi" },
+              { "name": "Hungarian", "value": "hu" },
+              { "name": "Indonesian", "value": "id" },
+              { "name": "Italian", "value": "it" },
+              { "name": "Japanese", "value": "ja" },
+              { "name": "Korean", "value": "ko-KR" },
+              { "name": "Norwegian", "value": "no" },
+              { "name": "Polish", "value": "pl" },
+              { "name": "Portuguese", "value": "pt-PT" },
+              { "name": "Russian", "value": "ru" },
+              { "name": "Spanish", "value": "es" },
+              { "name": "Swedish", "value": "sv" },
+              { "name": "Thai", "value": "th" },
+              { "name": "Vietnamese", "value": "vi" }
+            ]
+          },
+          {
+            "name": "Nova-3",
+            "value": "nova-3",
+            "languages": [
+              { "name": "English General", "value": "en" },
+              { "name": "English-US", "value": "en-US" },
+              { "name": "Multilingual (English & Hindi)", "value": "multi" }
+            ]
+          },
+          {
+            "name": "Nova-3-Medical",
+            "value": "nova-3-medical",
+            "languages": [
+              { "name": "English General", "value": "en" },
+              { "name": "English-US", "value": "en-US" }
+            ]
+          },
+          {
+            "name": "Nova-2-Phonecall",
+            "value": "nova-2-phonecall",
+            "languages": [
+              { "name": "English General", "value": "en" },
+              { "name": "English-US", "value": "en-US" }
+            ]
+          },
+          {
+            "name": "Nova-2-Conversational AI",
+            "value": "nova-2-conversationalai",
+            "languages": [
+              { "name": "English General", "value": "en" },
+              { "name": "English-US", "value": "en-US" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "AssemblyAI",
+        "value": "assemblyai",
+        "models": [
+          {
+            "name": "Default",
+            "value": "default",
+            "languages": [
+              { "name": "English", "value": "en" },
+              { "name": "Spanish", "value": "es" }
+            ]
+          },
+          {
+            "name": "Medical",
+            "value": "medical",
+            "languages": [
+              { "name": "English-US", "value": "en-US" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
