@@ -11,7 +11,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '../../components/ui/dropdown-menu';
 import { Sun, Moon } from 'lucide-react';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {

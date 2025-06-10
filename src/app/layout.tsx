@@ -1,6 +1,6 @@
 import './globals.css'
-import ClientOnly from '@/components/ClientOnly';
-import { ThemeProviderWrapper } from '@/components/theme-provider';
+import ClientOnly from '../components/ClientOnly';
+import { ThemeProviderWrapper } from '../components/theme-provider';
 import { Toaster } from 'react-hot-toast';
 
 
