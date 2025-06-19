@@ -13,7 +13,7 @@ export async function GET() {
       { stt },
       {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json', // tells browser its a JSON response 
           'Cache-Control': 'public, s-maxage=3600'
         }
       }
